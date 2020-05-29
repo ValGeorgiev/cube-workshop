@@ -1,8 +1,3 @@
-// Id - number
-// Name – string
-// Description – string 
-// Image URL – string
-// Difficulty Level– number
 const { v4 } = require('uuid')
 const fs = require('fs')
 const path = require('path')
