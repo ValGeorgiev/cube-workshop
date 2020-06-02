@@ -105,6 +105,15 @@ button, main a.btn {
     color: white;
 }
 
+a.btn.btn-del {
+    background-color: red;
+    display: inline;
+}
+
+div.btns {
+    display: flex;
+}
+
 button:hover {
     background-color: #0B2133;
     color: white;

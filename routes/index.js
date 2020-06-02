@@ -2,6 +2,7 @@ const { Router } = require('express')
 const { getAllCubes } = require('../controllers/cubes')
 const { getCube } = require('../controllers/database')
 const Cube = require('../models/cube')
+const fs = require('fs')
 
 const router = Router()
 
@@ -49,6 +50,26 @@ router.get('/details/:id', (req, res) => {
       title: 'Details | Cube Workshop',
       ...cube
     })
+  })
+})
+
+router.get('/delete/:id', (req, res) => {
+  getAllCubes((cubes) => {
+    const id = req.params.id;
+
+    cubes.forEach((cube, i) => {
+      if (cube.id === id) {
+        cubes.splice(i, 1);
+      }
+    });
+
+    fs.writeFile('./config/database.json', JSON.stringify(cubes), err => {
+      if (err) {
+        throw err;
+      }
+      console.log('The file has been deleted');
+    })
+    res.redirect(301, '/');
   })
 })
 
