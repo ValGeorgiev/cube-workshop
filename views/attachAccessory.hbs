@@ -1,14 +1,14 @@
 
 <h1>Attach a new accessory</h1>
 <div class="form">
-  <h2>{{name}}</h2>
-  <img class="cube" src="{{imageUrl}}">
-  {{#if canAttachAccessory}}
-    <form action='/attach/accessory/{{_id}}' method="POST">
+  <h2>{{cube.name}}</h2>
+  <img class="cube" src="{{cube.imageUrl}}">
+  {{#if accessories}}
+    <form action='/attach/accessory/{{cube._id}}' method="POST">
       <label for="accessory">Accessories</label>
       <select id="accessory" name="accessory">
         {{#each accessories}}
-          <option value="{{this._id}}">{{this.name}}</option>
+          <option value="{{_id}}">{{name}}</option>
         {{/each}}
       </select>
       <input type="submit" value="Attach">
