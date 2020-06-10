@@ -5,8 +5,8 @@ class Cube {
   constructor(name, description, imageUrl, difficulty) {
     this.id = v4()
     this.name = name || "No Name"
-    this.description = description 
-    this.imageUrl = imageUrl || "placeholder"
+    this.description = description
+    this.imageUrl = imageUrl || 'https://sciences.ucf.edu/psychology/wp-content/uploads/sites/63/2019/09/No-Image-Available.png';
     this.difficulty = difficulty || 0
   }
 

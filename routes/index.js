@@ -57,13 +57,10 @@ router.get('/delete/:id', (req, res) => {
   getAllCubes((cubes) => {
     const id = req.params.id;
 
-    cubes.forEach((cube, i) => {
-      if (cube.id === id) {
-        cubes.splice(i, 1);
-      }
-    });
+    const cubesModified = cubes.filter(cube => cube.id !== id);
 
-    fs.writeFile('./config/database.json', JSON.stringify(cubes), err => {
+
+    fs.writeFile('./config/database.json', JSON.stringify(cubesModified), err => {
       if (err) {
         throw err;
       }
