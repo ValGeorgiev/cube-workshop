@@ -86,7 +86,7 @@ router.get('/attach/accessory/:id', async (req, res, next) => {
   const { id: cubeId } = req.params
   try {
     const data = await attachedAccessories(cubeId)
-    console.log(data)
+
     res.render('attachAccessory', {
       title: 'Attach accessory',
       ...data,
