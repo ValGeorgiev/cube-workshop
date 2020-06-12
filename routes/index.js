@@ -14,6 +14,12 @@ router.get('/', getUserStatus, async (req, res) => {
   })
 })
 
+router.get('/logout', (req, res) => {
+  res.clearCookie('aid')
+
+  res.redirect('/')
+})
+
 router.get('/about', getUserStatus, (req, res) => {
   res.render('about', {
     title: 'About | Cube Workshop',
