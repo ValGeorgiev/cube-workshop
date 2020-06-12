@@ -42,10 +42,7 @@ const verifyUser = async (req, res) => {
     password
   } = req.body
 
-  // get User by username
-
   const user = await User.findOne({ username })
-
   const status = await bcrypt.compare(password, user.password)
 
   if (status) {
