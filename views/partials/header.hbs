@@ -2,13 +2,19 @@
   <ul>
     <li><img class="logo" src="/static/images/logo.png"></li>
     <li><a href="/">Browse</a></li>
-    <li><a href="/create">Add a Cube</a></li>
-    <li><a href="/create/accessory">Create Accessory</a></li>
-    <li><a href="/about">About</a></li>
+    {{#if isLoggedIn}}
+      <li><a href="/create">Add a Cube</a></li>
+      <li><a href="/create/accessory">Create Accessory</a></li>
+    {{/if}}
 
-    <li><a href="/login">Login</a></li>
-    <li><a href="/signup">Register</a></li>
-    <li><a href="/">Logout</a></li>
+    <li><a href="/about">About</a></li>
+    
+    {{#if isLoggedIn}}
+      <li><a href="/logout">Logout</a></li>
+    {{else}}
+      <li><a href="/login">Login</a></li>
+      <li><a href="/signup">Register</a></li>
+    {{/if}}
 
   </ul>
 </header>
