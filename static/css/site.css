@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+
+.notification {
+  margin: 2% auto;
+  text-align: center;
+  width: 50%;
+  padding: .5%;
+  background: rgb(231, 118, 118);
+  color: white;
+  border-radius: 5px;
+  text-decoration: underline;
+}
+
+
 body {
     margin: 0;
     padding: 0;

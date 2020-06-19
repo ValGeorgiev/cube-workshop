@@ -1,6 +1,7 @@
 const express = require('express')
 const { authAccess, getUserStatus } = require('../controllers/user')
 const { attachedAccessories } = require('../controllers/accessories')
+const Accessory = require('../models/accessory')
 const { updateCube } = require('../controllers/cubes')
 
 const router = express.Router()
@@ -25,9 +26,20 @@ router.post('/create/accessory', authAccess, async (req, res) => {
     imageUrl
   })
 
-  await accessory.save()
+  try {
+    await accessory.save()
+    res.render('createAccessory', {
+      title: 'Create accessory',
+      isLoggedIn: req.isLoggedIn
+    })
+  } catch (err) {
+    res.render('createAccessory', {
+      title: 'Create accessory',
+      isLoggedIn: req.isLoggedIn,
+      error: 'Accessory details are not valid'
+    })
+  }
 
-  res.redirect('/create/accessory')
 })
 
 router.get('/attach/accessory/:id', authAccess, getUserStatus, async (req, res, next) => {
