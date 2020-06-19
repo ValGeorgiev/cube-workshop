@@ -37,7 +37,7 @@ const saveUser = async (req, res) => {
     
     return token
   } catch (err) {
-    console.log(err)
+
     return {
       error: true,
       message: err
@@ -56,7 +56,6 @@ const verifyUser = async (req, res) => {
     const user = await User.findOne({ username })
 
     if (!user) {
-      console.log('no user')
       return {
         error: true,
         message: 'There is no such user'
@@ -64,7 +63,6 @@ const verifyUser = async (req, res) => {
     }
 
     const status = await bcrypt.compare(password, user.password)
-    console.log(status, 'status')
     if (status) {
       const token = generateToken({ 
         userID: user._id,
@@ -79,7 +77,6 @@ const verifyUser = async (req, res) => {
       message: status || 'Wrong password'
     }
   } catch (err) {
-    console.log('catch user')
 
     return {
       error: true,
