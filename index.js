@@ -10,6 +10,14 @@ const cubeRouter = require('./routes/cube')
 const accessoryRouter = require('./routes/accessory')
 const app = express()
 
+let __setOptions = mongoose.Query.prototype.setOptions;
+
+mongoose.Query.prototype.setOptions = function (options) {
+    __setOptions.apply(this, arguments);
+    if (this._mongooseOptions.lean == null) this._mongooseOptions.lean = true;
+    return this;
+};
+
 mongoose.connect(config.databaseUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
